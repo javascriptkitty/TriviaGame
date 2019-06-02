@@ -1,0 +1,45 @@
+body {
+  padding: 20px 150px;
+  text-align: center;
+  background: url(../images/back5.jpg) no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 14pt;
+}
+
+.wrapper {
+  background-color: rgba(250, 235, 215, 0.8);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+}
+.answer {
+  display: flex;
+  height: 50px;
+}
+h1 {
+  font-size: 40pt;
+  color: #252850;
+  font-family: "Barrio", cursive;
+}
+h2 {
+  font-size: 24pt;
+}
+.timer {
+  margin: 40px 0;
+}
+.image {
+  margin-top: 20px;
+  height: 400px;
+  border: 1px solid black;
+}
+
+/* font-family: 'Amatic SC', cursive;
+
+
+font-family: 'Quicksand', sans-serif;
+font-family: 'Ranchers', cursive;
+font-family: 'Rye', cursive;
+font-family: 'Sigmar One', cursive;
+ font-family: 'Barrio', cursive; */
