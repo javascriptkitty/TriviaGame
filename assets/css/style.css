@@ -74,6 +74,16 @@ img {
 .quiz {
   display: none;
 }
+.check {
+  display: none;
+  background-color: rgba(250, 235, 215, 0.2);
+  color: #252850;
+  border: 0;
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-size: 30pt;
+  outline: 0;
+}
 /* font-family: 'Amatic SC', cursive;
 
 

@@ -95,6 +95,7 @@ var countries = [
 ];
 
 var number;
+var timerOn = false;
 var intervalId;
 var usersInput;
 var questionIndex = 0;
@@ -105,33 +106,34 @@ $(document).ready(function() {
   $("#start").on("click", function() {
     $(".start").css("display", "none");
     $(".quiz").css("display", "block");
-
     displayQuestion(questionIndex);
+
+    $(".names").on("click", checkAnswer);
   });
 });
 
-// while (questionIndex >= 18) {
-//     displayQuestion(questionIndex);
-//     run();
-//     questionIndex++;
-//   }
-
+// TIMER
 function startTimer() {
   number = 2;
+
   intervalId = setInterval(decrement, 1000);
 }
 
+function stopTimer() {
+  clearInterval;
+}
 function decrement() {
   debugger;
   number--;
   $("#time").html("<h2>" + number + "</h2>");
   if (number === 0) {
     clearInterval(intervalId);
-    questionIndex++;
-    displayQuestion(questionIndex);
+    // questionIndex++;
+    // displayQuestion(questionIndex);
   }
 }
 
+// QUIZ
 function displayQuestion(index) {
   $("#image").attr("src", countries[index].shape);
   startTimer();
@@ -159,7 +161,18 @@ function updateDivs(choices) {
     $(this).text(choices[index]);
   });
 }
-//
 
-//display questions every sec
-//display 1st ques, if the user answer before, set new attr
+//ANSWER
+function checkAnswer() {
+  $("#image").attr("src", countries[questionIndex].image);
+  $(".check").css("display", "block");
+  $(".names").css("display", "none");
+  usersInput = $(this).text();
+  if (usersInput === countries[questionIndex].name) {
+    $(".check").text("CORRECT!");
+  } else {
+    $(".check").text(
+      "Nope! The correct answer was: " + countries[questionIndex].name
+    );
+  }
+}
