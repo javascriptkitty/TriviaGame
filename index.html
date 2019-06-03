@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
     <title>Word countries map</title>
 
     <link
@@ -18,13 +18,20 @@
   <body>
     <div class="wrapper">
       <h1>World countries map Trivia</h1>
-      <div class="timer">
-        <h2>Time remaining <span id="time"></span></h2>
-      </div>
+      <div class="start"><button id="start">start</button></div>
+
       <div class="quiz">
+        <div class="timer">
+          <h2>Time remaining <span id="time"></span></h2>
+        </div>
         <div id="question"><h2>Name a country!</h2></div>
-        <div class="image"></div>
-        <div class="answer"></div>
+        <div class="image"><img id="image" height="450px" /></div>
+        <div class="answers">
+          <div class="names"></div>
+          <div class="names"></div>
+          <div class="names"></div>
+          <div class="names"></div>
+        </div>
       </div>
     </div>
   </body>
