@@ -1,5 +1,5 @@
 body {
-  padding: 20px 150px;
+  padding: 2% 10%;
   text-align: center;
   background: url(../images/back5.jpg) no-repeat center center fixed;
   background-size: cover;
@@ -11,21 +11,32 @@ body {
   background-color: rgba(250, 235, 215, 0.8);
   padding: 30px;
   border-radius: 10px;
-  height: 650px;
+  height: 720px;
   display: flex;
   flex-direction: column;
 }
 .start {
   margin: auto 0;
 }
-#start {
+#start,
+.names {
   background-color: #252850;
   color: bisque;
-  border-radius: 30px;
-  padding: 15px 30px;
   font-family: "Josefin Sans", sans-serif;
-  font-size: 24pt;
   outline: 0;
+}
+#start {
+  border-radius: 30px;
+  font-size: 24pt;
+  padding: 15px 30px;
+}
+.names {
+  margin: 5px 15px;
+  padding: 5px 15px;
+
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 #start:active {
@@ -44,13 +55,7 @@ body {
   justify-content: center;
   padding: 10px 40px;
 }
-.names {
-  margin: 0 15px;
-  padding: 5px 20px;
-  border: 1px solid darkblue;
-  display: flex;
-  align-items: center;
-}
+
 h1 {
   font-size: 40pt;
   color: #252850;
@@ -65,7 +70,6 @@ h2 {
 .image {
   margin-top: 20px;
   height: 350px;
-  border: 1px solid black;
 }
 img {
   max-width: 100%;
@@ -75,20 +79,29 @@ img {
   display: none;
 }
 .check {
+  margin: 50px 0;
   display: none;
   background-color: rgba(250, 235, 215, 0.2);
   color: #252850;
   border: 0;
   border-radius: 30px;
-  padding: 10px 25px;
-  font-size: 30pt;
+  
+  font-size: 24pt;
   outline: 0;
 }
-/* font-family: 'Amatic SC', cursive;
 
 
-font-family: 'Quicksand', sans-serif;
-font-family: 'Ranchers', cursive;
-font-family: 'Rye', cursive;
-font-family: 'Sigmar One', cursive;
- font-family: 'Barrio', cursive; */
+@media screen and (max-width: 640px) {
+  body {
+    padding: 1% 5%;
+  }
+  .wrapper {
+    padding: 30px 15px;
+  }
+  .names {
+    margin: 0 5px;
+    font-size: 11pt;
+   display: flex;
+   justify-content: center;
+
+}

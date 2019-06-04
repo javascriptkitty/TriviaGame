@@ -88,7 +88,7 @@ var countries = [
     image: "assets/images/uk.png"
   },
   {
-    name: "UNITED STATES OF AMERICA",
+    name: "USA",
     shape: "assets/images/usa_.png",
     image: "assets/images/usa.png"
   }
@@ -98,6 +98,8 @@ var number;
 var timerOn = false;
 var intervalId;
 var usersInput;
+var correct = 0;
+var notCorrect = 0;
 var questionIndex = 0;
 
 $(document).ready(function() {
@@ -107,34 +109,40 @@ $(document).ready(function() {
     $(".start").css("display", "none");
     $(".quiz").css("display", "block");
     displayQuestion(questionIndex);
-
     $(".names").on("click", checkAnswer);
   });
+  if (questionIndex === 17) {
+    console.log("18");
+    // delayQuestion();
+    // results();
+  }
 });
 
 // TIMER
 function startTimer() {
-  number = 2;
-
+  number = 1;
   intervalId = setInterval(decrement, 1000);
 }
 
 function stopTimer() {
-  clearInterval;
+  clearInterval(intervalId);
 }
 function decrement() {
-  debugger;
+  //debugger;
   number--;
-  $("#time").html("<h2>" + number + "</h2>");
+  $("#time").text(" " + number);
   if (number === 0) {
     clearInterval(intervalId);
-    // questionIndex++;
-    // displayQuestion(questionIndex);
+    timeUp();
   }
 }
 
 // QUIZ
 function displayQuestion(index) {
+  $(".check").css("display", "none");
+  $(".timer").css("display", "block");
+  $("#question").css("display", "block");
+  $(".names").css("display", "block");
   $("#image").attr("src", countries[index].shape);
   startTimer();
   showAnswers(index);
@@ -153,7 +161,7 @@ function showAnswers(index) {
   });
 
   updateDivs(arr);
-  console.log(arr);
+  //console.log(arr);
 }
 
 function updateDivs(choices) {
@@ -164,15 +172,47 @@ function updateDivs(choices) {
 
 //ANSWER
 function checkAnswer() {
+  stopTimer();
   $("#image").attr("src", countries[questionIndex].image);
   $(".check").css("display", "block");
   $(".names").css("display", "none");
+  $("#question").css("display", "none");
+  $(".timer").css("display", "none");
   usersInput = $(this).text();
   if (usersInput === countries[questionIndex].name) {
     $(".check").text("CORRECT!");
+    correct++;
   } else {
     $(".check").text(
       "Nope! The correct answer was: " + countries[questionIndex].name
     );
+    notCorrect++;
   }
+  delayQuestion();
+}
+
+function delayQuestion() {
+  setTimeout(function() {
+    questionIndex++;
+    displayQuestion(questionIndex);
+  }, 3000);
+}
+function timeUp() {
+  $(".check").css("display", "block");
+  $(".names").css("display", "none");
+  $("#question").css("display", "none");
+  $(".timer").css("display", "none");
+  $("#image").attr("src", countries[questionIndex].image);
+  $(".check").text(
+    "Time's up! The correct answer was: " + countries[questionIndex].name
+  );
+  delayQuestion();
+}
+
+// RESULT
+function results() {
+  $(".quiz").empty();
+  var score = $("<div>");
+  score.text("xxx");
+  $(".quiz").append(score);
 }
