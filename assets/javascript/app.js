@@ -94,33 +94,29 @@ var countries = [
   }
 ];
 
+countries.sort(function() {
+  return 0.5 - Math.random();
+});
+
 var number;
-var timerOn = false;
 var intervalId;
 var usersInput;
+var timerOn = false;
 var correct = 0;
-var notCorrect = 0;
 var questionIndex = 0;
 
 $(document).ready(function() {
-  //   function reset() {}
-
   $("#start").on("click", function() {
     $(".start").css("display", "none");
     $(".quiz").css("display", "block");
     displayQuestion(questionIndex);
     $(".names").on("click", checkAnswer);
   });
-  if (questionIndex === 17) {
-    console.log("18");
-    // delayQuestion();
-    // results();
-  }
 });
 
 // TIMER
 function startTimer() {
-  number = 1;
+  number = 10;
   intervalId = setInterval(decrement, 1000);
 }
 
@@ -179,6 +175,7 @@ function checkAnswer() {
   $("#question").css("display", "none");
   $(".timer").css("display", "none");
   usersInput = $(this).text();
+
   if (usersInput === countries[questionIndex].name) {
     $(".check").text("CORRECT!");
     correct++;
@@ -186,15 +183,18 @@ function checkAnswer() {
     $(".check").text(
       "Nope! The correct answer was: " + countries[questionIndex].name
     );
-    notCorrect++;
   }
   delayQuestion();
 }
 
 function delayQuestion() {
   setTimeout(function() {
-    questionIndex++;
-    displayQuestion(questionIndex);
+    if (questionIndex < 17) {
+      questionIndex++;
+      displayQuestion(questionIndex);
+    } else {
+      results();
+    }
   }, 3000);
 }
 function timeUp() {
@@ -211,8 +211,29 @@ function timeUp() {
 
 // RESULT
 function results() {
-  $(".quiz").empty();
-  var score = $("<div>");
-  score.text("xxx");
-  $(".quiz").append(score);
+  $(".quiz").css("display", "none");
+  $(".score").css("display", "block");
+  var message;
+  if (correct < countries.length * 0.4) {
+    message = "your geography sucks, you must be american";
+  } else if (correct < countries.length * 0.6) {
+    message = "your geography skills need some improvement!";
+  } else if (correct < countries.length * 0.8) {
+    message = "your geography skills are OK, but not great!";
+  } else {
+    message = "very good!";
+  }
+  $(".score").attr("display", "flex");
+  $(".score").attr({ margin: "auto 0" });
+  $(".score").prepend("<h3>" + message + "</h3>");
+  $(".score").prepend("<h2>" + correct + " of " + countries.length + "</h2>");
+  $("#reStart").on("click", reset);
+}
+
+function reset() {
+  timerOn = false;
+  correct = 0;
+  questionIndex = 0;
+  $(".start").css("display", "block");
+  $(".score").css("display", "none");
 }
