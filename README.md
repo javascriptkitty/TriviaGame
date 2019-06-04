@@ -4,6 +4,9 @@
 
 ## Description
 
+This trivia game shows only one question until the player answers it or the time runs out. After the player selects his answer, the game shows if it's correct or not.
+On the final screen it shows number of correct answers, and an option to restart the game.
+
 ## Technoligies Used
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
