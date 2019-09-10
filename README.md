@@ -1,6 +1,6 @@
 # TriviaGame
 
-![Site screenshort](https://github.com/javascriptkitty/TriviaGame/blob/master/assets/images/ScreenShot.png)
+![Site screenshort](https://github.com/javascriptkitty/TriviaGame/blob/master/assets/images/ScreenShot.gif)
 
 ## Description
 

@@ -37,7 +37,8 @@ body {
   padding: 5px 15px;
 
   border-radius: 10px;
-  display: flex;
+  display: flex !important;
+  align-items: center;
   justify-content: center;
 }
 
